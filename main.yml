@@ -1,0 +1,14 @@
+name: Test in Docker
+on: push
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    # Cypress Docker image from https://hub.docker.com/r/cypress
+    # with browsers pre-installed
+    container:
+      image: cypress/browsers:latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
